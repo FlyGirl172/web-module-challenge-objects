@@ -16,8 +16,12 @@ The function should:
 */
 
 
-function createMenuItem(/*Your code here*/){
-  /*Your code here*/
+function createMenuItem(menuItem, price, menuCategory){
+  return {
+    name: menuItem,
+    price: price,
+    category: menuCategory,
+  }
 }
 
 
@@ -31,8 +35,9 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
-
-
+console.log(createMenuItem('Quesadilla', '3', 'lunch'));
+console.log(createMenuItem('Tomato Bisque', '2', 'lunch'));
+console.log(createMenuItem('Pesto Chicken Sandwich', '4', 'lunch'))
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the burger object below that automatically calculates price depending on the string received as a parameter. 
@@ -51,9 +56,24 @@ const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  
+discount: function(customers) {
+ if(customers === 'teacher' || customers === 'student'){
+ return this.price - this.price * .25 
+ } else {
+ return this.price - this.price * .10
 }
+}
+}
+console.log('Task 2:', burger.discount('teacher'))
+console.log('Task 2:', burger.discount('student'))
+console.log('Task 2:', burger.discount('public'))
 
+
+
+
+
+
+  
 
 
 ///////////////Reviews (MVP)///////////////////
@@ -72,6 +92,12 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
+for (const element of reviews) {
+  if(element.name == "Julius") {
+  console.log(`Task 3: ${element.feedback}`)
+  }
+}
+
 
 
 
@@ -95,9 +121,15 @@ Use the addReview function below to do the following:
 */
 
 
-function addReview(/*Your Code Here */){
-  /*Your Code Here */
+function addReview(reviews, name, rating, feedback){
+  const newReview = {name:name,
+  rating: rating,
+  feedback: feedback}
+  reviews.push(newReview)
+return reviews
 }
+console.log(addReview(reviews))
+
 
 
 
@@ -112,9 +144,11 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(newArray, index) {
+  return `${newArray[index].name} gave the restaurant a ${newArray[index].rating} star review, and their feedback was: ${newArray[index].feedback}`
+
 }
+
 
   
 
@@ -131,8 +165,9 @@ Use the getLastReview function below to do the following:
 */
 
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
+function getLastReview(finalArray) { 
+  const index = finalArray.length-1
+  return `${finalArray[index].name} gave the restaurant a ${finalArray[index].rating} star review, and their feedback was: ${finalArray[index].feedback}`
 } 
 
 
